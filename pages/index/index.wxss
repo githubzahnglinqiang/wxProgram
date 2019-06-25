@@ -1,4 +1,7 @@
 /**index.wxss**/
+.container {
+  align-items: center;
+} 
 .userinfo {
   display: flex;
   flex-direction: column;

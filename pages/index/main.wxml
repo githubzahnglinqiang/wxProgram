@@ -1,19 +1,38 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
+  <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
+  </view> -->
+
+
+  <view class="slide">
+    <swiper indicator-dots='true' autoplay='true' interval='4000' duration='{{duration}}'>
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+    <swiper-item>
+    <image src="{{item.url}}" class="item-image" width="355" height="150" mode="aspectFill"/>
+    </swiper-item>
+    </block>
+    </swiper>
   </view>
-  <view class="intro">
-  <text class="intro-myWord">
-  Hello,I am the Doctor!Doctor Who!
-  </text>
+<view>网络视频</view>
+ <view class="board">
+    <video class="interVideo"
+    src="https://boba.52kuyun.com/20180913/KwhELW7x/index.m3u8" binderror="videoErrorCallback"></video>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  
+
+
+ <view >本地视频</view>
+  <view style="display: flex;flex-direction: column;">
+ <video class="localVieo" style="width: 100%;height=400px;margin:1px;" src="{{src}}"></video>
+ <view class="btn-area">
+ <button bindtap="bindButtonTap">打开本地视频</button>
+ </view>
+ </view>
 </view>
+
+  
+
