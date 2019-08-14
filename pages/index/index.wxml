@@ -1,5 +1,11 @@
 <!--index.wxml-->
+<!-- 背景图片 -->
+ <view class="content">
+    <image class='background' src="../image/background.JPG" mode="aspectFill"></image>
+</view>
 <view class="container">
+
+ 
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -7,6 +13,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
@@ -14,3 +21,4 @@
   <button id="1" bindtap='gotoPage'> 进入主页 </button>
   </view>
 </view>
+

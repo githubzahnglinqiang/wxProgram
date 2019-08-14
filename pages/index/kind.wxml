@@ -1,0 +1,4 @@
+<!--pages/index/kind.wxml-->
+<view class="page-section page-section-gap">
+  <web-view src="http://192.168.1.3/KpranoSystems/returnIndex"></web-view>
+</view>

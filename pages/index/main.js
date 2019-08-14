@@ -4,11 +4,14 @@ const app = getApp()
 
 Page({
   data: {
+    list: '',
+    word: '',
+    message: '',
     avatarUrl: null,
-    imgUrls: [{url:'../../image/doctor1.jpg'},
-              {url:'../../image/doctor2.jpg'},
-              {url:'../../image/doctor3.jpg'},
-              {url:'../../image/doctor4.jpg'}],
+    imgUrls: [{ url: '../image/doctor1.jpg' },
+    { url: '../image/doctor2.jpg' },
+    { url: '../image/doctor3.jpg' },
+    { url: '../image/doctor4.jpg' }],
     autoplay: true,
     interval: 3000,
     duration: 1200,
@@ -93,10 +96,70 @@ Page({
   videoErrorCallback: function (e) {
     console.log('视频错误信息:')
     console.log(e.detail.errMsg)
-  }
-    
-  
+  },
 
- 
+  houduanButton1: function () {
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8081/cxjggl/getUser',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)//打印到控制台
+        var list = res.data.list;
+        if (list == null) {
+          var toastText = '数据获取失败';
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000
+          });
+        } else {
+          that.setData({
+            list: list
+          })
+        }
+      }
+    })
+  },
+
+  houduanTab_input: function (e) {
+    this.setData({
+      word: e.detail.value
+    })
+  },
+  // houduanButton2的网络请求
+  houduanButton2: function () {
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8081/cxjggl/getWord',
+      data: {
+        word: that.data.word
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)//打印到控制台
+        var message = res.data.message;
+        if (message == null) {
+          var toastText = '数据获取失败';
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000
+          });
+        } else {
+          that.setData({
+            message: message
+          })
+        }
+      }
+    })
+  }
+
 
 })

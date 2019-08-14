@@ -15,11 +15,6 @@ Page({
       url: '../logs/logs'
     })
   },
-  gotoPage: function (e) {
-    wx.navigateTo({
-      url: '../index/main'
-    })
-  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -48,6 +43,11 @@ Page({
       })
     }
   },
+  gotoPage: function (e) {
+    wx.switchTab({/* wx.navigateTo 和 wx.redirectTo 不允许跳转到 tabbar 页面，只能用 wx.switchTab 跳转到 tabbar 页面 */
+      url: '../index/main'
+    })
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -56,5 +56,4 @@ Page({
       hasUserInfo: true
     })
   }
-  
 })

@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!--pages/index/main.wxml-->
 <view class="container">
   <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -18,21 +18,30 @@
     </block>
     </swiper>
   </view>
-<view>网络视频</view>
+<!-- <view>网络视频</view>
  <view class="board">
     <video class="interVideo"
     src="https://boba.52kuyun.com/20180913/KwhELW7x/index.m3u8" binderror="videoErrorCallback"></video>
-  </view>
+  </view> -->
 
 
- <view >本地视频</view>
+ <!-- <view >本地视频</view>
   <view style="display: flex;flex-direction: column;">
  <video class="localVieo" style="width: 100%;height=400px;margin:1px;" src="{{src}}"></video>
  <view class="btn-area">
  <button bindtap="bindButtonTap">打开本地视频</button>
  </view>
- </view>
+ </view> -->
+
+
+ <button bindtap='houduanButton1'>点击发起请求</button>
+<view wx:for="{{list}}">
+    神秘博士：{{item}}
+  </view>
+
+  <input type="text" class="houduanTab_input" placeholder="请输入你要查询的内容" bindinput='houduanTab_input'></input>
+  <button bindtap='houduanButton2'>查询</button>
+  <view wx:if="{{message!=''}}">
+    {{message}}
+  </view>
 </view>
-
-  
-
